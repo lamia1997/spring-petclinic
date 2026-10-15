@@ -1,18 +1,17 @@
 name: "Exemple de workflow"
 on:
-    push:
-          branches:
-                  - main
+  push:
+    branches:
+      - main
 
-          jobs:
-              greet-user:
-                    runs-on: ubuntu-latest
-                          steps:
-                                - name: Checkout code
-                                        uses: actions/checkout@v3
+jobs:
+  greet-user:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-                                              - name: Dire bonjour
-                                                      uses: ./ # Utilise l'action locale
-                                                              with:
-                                                                        username: "Jean"
-                                                                                  greeting: "Salut"
+    - name: Exécuter l'action Docker
+      uses: ./ # Utilise l'action locale
+      with:
+        message: "Salut de l'action Docker"
